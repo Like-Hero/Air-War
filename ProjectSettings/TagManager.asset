@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Bullet
+  - Enemy
+  - ResultInterface
+  - PlayerGun
+  - EnemyGun
+  - PlayerBullet
+  - EnemyBullet
+  - EnemyBulletClear
+  - EnemyPlaneClear
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 561884451
+    locked: 0
+  - name: Bullet
+    uniqueID: 1202477999
+    locked: 0
+  - name: Enemy
+    uniqueID: 2352494089
+    locked: 0
+  - name: Award
+    uniqueID: 617643343
+    locked: 0
+  - name: Player
+    uniqueID: 635599843
+    locked: 0
+  - name: Frontground
+    uniqueID: 1347545129
+    locked: 0
