@@ -18,14 +18,12 @@ public class EnemyCreator : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.gameIsPlaying)
+        if (!GameManager.Ins.gameIsPlaying) return;
+        if (!isCreat)
         {
-            if (!isCreat)
-            {
-                isCreat = true;
-                float delayTime = Random.Range(minDelayTime, maxDelayTime);
-                Invoke("CreatEnemy", delayTime);
-            }
+            isCreat = true;
+            float delayTime = Random.Range(minDelayTime, maxDelayTime);
+            Invoke("CreatEnemy", delayTime);
         }
     }
     private void CreatEnemy()

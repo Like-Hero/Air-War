@@ -22,14 +22,14 @@ public class Award : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player_1") || other.CompareTag("Player_2"))
         {
             if (CompareTag("EnemyBulletClear"))
             {
-                GameManager.Prop_EnemyBulletClearAmount++;
+                GameManager.Ins.Prop_EnemyBulletClearAmount++;
             }else if (CompareTag("EnemyPlaneClear"))
             {
-                GameManager.Prop_EnemyPlaneClearAmount++;
+                GameManager.Ins.Prop_EnemyPlaneClearAmount++;
             }
             Destroy(gameObject);
         }

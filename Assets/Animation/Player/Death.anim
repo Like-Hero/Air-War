@@ -76,7 +76,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.4
-    functionName: NoticeGameManagerDead
+    functionName: Dead
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

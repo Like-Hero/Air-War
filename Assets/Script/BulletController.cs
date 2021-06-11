@@ -6,6 +6,11 @@ public class BulletController : MonoBehaviour
     public int attack;
     private void Update()
     {
+        if (!GameManager.Ins.gameIsPlaying)
+        {
+            Destroy(gameObject);
+            return;
+        }
         if(transform.position.y > GameObject.Find("DestroyUpPoint").transform.position.y)
         {
             Destroy(gameObject);
@@ -16,6 +21,7 @@ public class BulletController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (!GameManager.Ins.gameIsPlaying) return;
         if (CompareTag("PlayerBullet"))
         {
             transform.Translate(Vector3.up * speed * Time.fixedDeltaTime);

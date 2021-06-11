@@ -14,20 +14,14 @@ public class AwardCreator : MonoBehaviour
     public Transform leftBoundary;
     public Transform rightBoundary;
 
-    private void Start()
-    {
-        
-    }
     private void Update()
     {
-        if (GameManager.gameIsPlaying)
+        if (!GameManager.Ins.gameIsPlaying) return;
+        if (!isCreat)
         {
-            if (!isCreat)
-            {
-                isCreat = true;
-                float delayTime = Random.Range(minDelayTime, maxDelayTime);
-                Invoke("CreatAward", delayTime);
-            }
+            isCreat = true;
+            float delayTime = Random.Range(minDelayTime, maxDelayTime);
+            Invoke("CreatAward", delayTime);
         }
     }
     private void CreatAward()

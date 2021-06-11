@@ -13,6 +13,8 @@ TagManager:
   - EnemyBullet
   - EnemyBulletClear
   - EnemyPlaneClear
+  - Player_1
+  - Player_2
   layers:
   - Default
   - TransparentFX

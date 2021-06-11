@@ -12,12 +12,12 @@ public class CanvasController : MonoBehaviour
     }
     private void UpdateCollectionValue()
     {
-        EnemyBulletClear_Text.text = GameManager.Prop_EnemyBulletClearAmount.ToString();
-        EnemyPlaneClear_Text.text = GameManager.Prop_EnemyPlaneClearAmount.ToString();
+        EnemyBulletClear_Text.text = GameManager.Ins.Prop_EnemyBulletClearAmount.ToString();
+        EnemyPlaneClear_Text.text = GameManager.Ins.Prop_EnemyPlaneClearAmount.ToString();
     }
     public void Restart()
     {
-        GameManager.gameIsPlaying = true;
+        GameManager.Ins.gameIsPlaying = true;
         PlayerData.Score = PlayerData.PrevScore;//恢复上一关的分数
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

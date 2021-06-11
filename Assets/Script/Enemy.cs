@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(other.gameObject);
             hp--;
-        }else if (other.CompareTag("Player"))
+        }else if (other.CompareTag("Player_1") || other.CompareTag("Player_2"))
         {
             hp = 0;
             other.gameObject.GetComponent<PlayerController>().nowHP = 0;
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
         {
             Dead();
         }
-        else if (hp <= 0 && GameManager.gameIsPlaying)
+        else if (hp <= 0 && GameManager.Ins.gameIsPlaying)
         {
             isDead = true;
             PlayerData.Score += GetComponent<Enemy>().score;

@@ -10,12 +10,27 @@ public class GunController : MonoBehaviour
     public float rate;
     private void Update()
     {
-        if (GameManager.gameIsPlaying)
+        if (!GameManager.Ins.gameIsPlaying) return;
+        if (CompareTag("PlayerGun"))
         {
-            if (!isCreat)
+            if (!GetComponentInParent<Transform>().GetComponentInParent<PlayerController>().isDead)
             {
-                isCreat = true;
-                Invoke("Shoot", rate);
+                if (!isCreat)
+                {
+                    isCreat = true;
+                    Invoke("Shoot", rate);
+                }
+            }
+        }
+        else if (CompareTag("EnemyGun"))
+        {
+            if (GameManager.Ins.gameIsPlaying)
+            {
+                if (!isCreat)
+                {
+                    isCreat = true;
+                    Invoke("Shoot", rate);
+                }
             }
         }
     }
