@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(other.gameObject);
             hp--;
-        }else if (other.CompareTag("Player_1") || other.CompareTag("Player_2"))
+        }else if (other.CompareTag("Player"))
         {
             hp = 0;
             other.gameObject.GetComponent<PlayerController>().nowHP = 0;
