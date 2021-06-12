@@ -11,6 +11,7 @@ public class HPController : MonoBehaviour
     }
     private void Update()
     {
+        if (GameManager.Ins.gameIsPause) return;
         if (GameManager.Ins.gameIsPlaying && player != null)
         {
             hpImage.fillAmount = (float)player.GetComponent<PlayerController>().nowHP / player.GetComponent<PlayerController>().maxHP;

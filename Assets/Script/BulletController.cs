@@ -6,6 +6,7 @@ public class BulletController : MonoBehaviour
     public int attack;
     private void Update()
     {
+        if (GameManager.Ins.gameIsPause) return;
         if (!GameManager.Ins.gameIsPlaying)
         {
             Destroy(gameObject);
@@ -21,6 +22,7 @@ public class BulletController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (GameManager.Ins.gameIsPause) return;
         if (!GameManager.Ins.gameIsPlaying) return;
         if (CompareTag("PlayerBullet"))
         {

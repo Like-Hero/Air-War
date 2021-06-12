@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
+        if (GameManager.Ins.gameIsPause) return;
         if (!isDead)
         {
             JudgeDead();
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (GameManager.Ins.gameIsPause) return;
         Move();
     }
     private void Move()

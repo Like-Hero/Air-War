@@ -7,6 +7,7 @@ public class Award : MonoBehaviour
     public int speed;
     private void Update()
     {
+        if (GameManager.Ins.gameIsPause) return;
         if (transform.position.y < GameObject.Find("DestroyDownPoint").transform.position.y)
         {
             Destroy(gameObject);
@@ -14,6 +15,7 @@ public class Award : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (GameManager.Ins.gameIsPause) return;
         Move();
     }
     private void Move()
@@ -26,7 +28,7 @@ public class Award : MonoBehaviour
         {
             if (CompareTag("EnemyBulletClear"))
             {
-                GameManager.Ins.Prop_EnemyBulletClearAmount++;
+                GameManager.Ins.Prop_FireUpgradeAmount++;
             }else if (CompareTag("EnemyPlaneClear"))
             {
                 GameManager.Ins.Prop_EnemyPlaneClearAmount++;

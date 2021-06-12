@@ -18,6 +18,7 @@ public class EnemyCreator : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Ins.gameIsPause) return;
         if (!GameManager.Ins.gameIsPlaying) return;
         if (!isCreat)
         {

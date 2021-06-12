@@ -12,7 +12,7 @@ public class CanvasController : MonoBehaviour
     }
     private void UpdateCollectionValue()
     {
-        EnemyBulletClear_Text.text = GameManager.Ins.Prop_EnemyBulletClearAmount.ToString();
+        EnemyBulletClear_Text.text = GameManager.Ins.Prop_FireUpgradeAmount.ToString();
         EnemyPlaneClear_Text.text = GameManager.Ins.Prop_EnemyPlaneClearAmount.ToString();
     }
     public void Restart()

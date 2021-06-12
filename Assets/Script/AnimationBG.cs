@@ -15,6 +15,7 @@ public class AnimationBG : MonoBehaviour
     }
     private void Update()
     {
+        if (GameManager.Ins.gameIsPause) return;
         Move();
     }
     private void Move()

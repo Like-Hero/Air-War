@@ -1155,7 +1155,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6280\u80FD\n\nQ\uFF1A\u6E05\u9664\u6240\u6709\u7684\u654C\u673A\u5B50\u5F39\nW\uFF1A\u6E05\u9664\u6240\u6709\u7684\u654C\u673A"
+  m_Text: "\u6280\u80FD\n\nQ\uFF1A\u589E\u5F3A\u706B\u529B\nW\uFF1A\u6E05\u9664\u6240\u6709\u7684\u654C\u673A"
 --- !u!222 &708304599
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1749,7 +1749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3a7e2a99f7f574e94d4cddfba0113d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prop_EnemyBulletClearAmount: 1000
+  Prop_FireUpgradeAmount: 10
   Prop_EnemyPlaneClearAmount: 1000
   EnemyBulletClearKeyCode: 113
   EnemyPlaneClearKeyCode: 119
@@ -1764,6 +1764,7 @@ MonoBehaviour:
   - {fileID: 1152423479}
   gameIsPlaying: 0
   gameIsFinish: 0
+  gameIsPause: 0
   startText: {fileID: 1475774946}
   tipsText: {fileID: 708304596}
   fireUpgradeContinueTime: 5
@@ -1796,6 +1797,7 @@ GameObject:
   - component: {fileID: 936510995}
   - component: {fileID: 936510994}
   - component: {fileID: 936510993}
+  - component: {fileID: 936510996}
   m_Layer: 5
   m_Name: FireTimeBar
   m_TagString: Untagged
@@ -1836,6 +1838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 1926607706}
   LevelText: {fileID: 1656306155}
+  minFireTime: 0
 --- !u!114 &936510994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1849,7 +1852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.008810949, g: 0.04149674, b: 0.6226415, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1860,7 +1863,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.47
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1873,6 +1876,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936510991}
   m_CullTransparentMesh: 0
+--- !u!95 &936510996
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936510991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e192711863c7d642ba33ac31087daf3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1054112631
 GameObject:
   m_ObjectHideFlags: 0

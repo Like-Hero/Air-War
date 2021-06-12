@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //游戏道具
-    public int Prop_EnemyBulletClearAmount;//清除界面中所有的敌人子弹
+    public int Prop_FireUpgradeAmount;//火力升级
     public int Prop_EnemyPlaneClearAmount;//清除界面中所有的敌人并且直接加分
 
     public KeyCode EnemyBulletClearKeyCode;
@@ -17,14 +17,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] HPImgs;
 
-    private bool EnemyBulletClear_IsPressed;
-    private bool EnemyPlaneClear_IsPressed;
-
     public GameObject[] players;
 
     public bool gameIsPlaying;
     public bool gameIsFinish;
-    //public bool gameIsPause;
+    public bool gameIsPause;
 
     public GameObject startText;
     public GameObject tipsText;
@@ -43,11 +40,23 @@ public class GameManager : MonoBehaviour
         {
             _ins = this;
         }
-        //GamePause();
+        TxTIO.Init();
+        TxTIO.ReadMaxScore();
     }
     private void Update()
     {
-        
+        if (gameIsPause)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameResume();
+            }
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GamePause();
+        }
         //游戏未开始
         if (!gameIsPlaying && !gameIsFinish)
         {
@@ -69,9 +78,9 @@ public class GameManager : MonoBehaviour
                 {
                     //时间到了，恢复火力
                     fireIsUpgrade = false;
-                    FireImgBar.SetActive(fireIsUpgrade);
                     fireUpgradeNowTime = 0;
                     fireLevel = 0;
+                    FireImgBar.SetActive(fireIsUpgrade);
                     ResumeFire();
                 }
             }
@@ -80,6 +89,7 @@ public class GameManager : MonoBehaviour
                 GameFinish();
             }
         }
+        PlayerData.MaxScore = Mathf.Max(PlayerData.MaxScore, PlayerData.Score);
     }
     private bool JudgeAllPlayerIsDead()
     {
@@ -92,24 +102,15 @@ public class GameManager : MonoBehaviour
         }
         return true;
     }
-
-    public void GameFinish()
-    {
-        print("游戏结束");
-        gameIsFinish = true;
-        gameIsPlaying = false;
-        Invoke("ShowResult", 1.0f);
-    }
     private void ShowResult()
     {
         ResultInterface.SetActive(true);
-        PlayerData.MaxScore = Mathf.Max(PlayerData.MaxScore, PlayerData.Score);
     }
     private void Prop_Update()
     {
-        if (Input.GetKeyDown(EnemyBulletClearKeyCode) && Prop_EnemyBulletClearAmount > 0)
+        if (Input.GetKeyDown(EnemyBulletClearKeyCode) && Prop_FireUpgradeAmount > 0)
         {
-            Prop_EnemyBulletClearAmount--;
+            Prop_FireUpgradeAmount--;
             fireIsUpgrade = true;
             fireUpgradeNowTime = 0;
             //ClearAllEnemyBullet();
@@ -133,10 +134,25 @@ public class GameManager : MonoBehaviour
             HPImg.SetActive(true);
         }
     }
-    //private void GamePause()
-    //{
-    //    gameIsPause = true;
-    //}
+    private void GamePause()
+    {
+        ShowResult();
+        gameIsPause = true;
+    }
+    private void GameResume()
+    {
+        gameIsPause = false;
+        ResultInterface.SetActive(false);
+    }
+    public void GameFinish()
+    {
+        print("游戏结束");
+        gameIsFinish = true;
+        gameIsPlaying = false;
+        TxTIO.WriteIntoTxt(PlayerData.Score.ToString());//写入当前分数
+        PlayerData.MaxScore = Mathf.Max(PlayerData.MaxScore, TxTIO.ReadMaxScore());//更新当前最大分数
+        Invoke("ShowResult", 1.0f);
+    }
     public void ClearAllEnemyPlane()
     {
         GameObject[] enemiesPlane = GameObject.FindGameObjectsWithTag("Enemy");

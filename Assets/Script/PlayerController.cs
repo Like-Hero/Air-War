@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        if (GameManager.Ins.gameIsPause) return;
         if (!GameManager.Ins.gameIsPlaying)
         {
             rb.velocity = Vector2.zero;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (!GameManager.Ins.gameIsPlaying) return;
+        if (GameManager.Ins.gameIsPause) return;
         if (!isDead)
         {
             Move();
