@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("EnemyBullet"))
+        if (other.CompareTag("Enemy0Bullet") || other.CompareTag("Enemy1Bullet") || other.CompareTag("Enemy2Bullet"))
         {
             nowHP -= other.GetComponent<BulletController>().attack;
             Destroy(other.gameObject);

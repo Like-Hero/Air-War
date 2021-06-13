@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,13 @@ public class GameManager : MonoBehaviour
     public int fireLevel;
     public GameObject FireImgBar;
 
+    //子弹池
+    public List<GameObject> playerBulletPool;
+    public List<GameObject> trackBulletPool;
+    public List<GameObject> enemy0BulletPool;
+    public List<GameObject> enemy1BulletPool;
+    public List<GameObject> enemy2BulletPool;
+
     private static GameManager _ins;
     public static GameManager Ins { get { return _ins; } }
     private void Start()
@@ -40,6 +48,10 @@ public class GameManager : MonoBehaviour
         {
             _ins = this;
         }
+        playerBulletPool = new List<GameObject>();
+        enemy0BulletPool = new List<GameObject>();
+        enemy1BulletPool = new List<GameObject>();
+        enemy2BulletPool = new List<GameObject>();
         TxTIO.Init();
         TxTIO.ReadMaxScore();
     }
@@ -90,6 +102,83 @@ public class GameManager : MonoBehaviour
             }
         }
         PlayerData.MaxScore = Mathf.Max(PlayerData.MaxScore, PlayerData.Score);
+    }
+    public GameObject MakeBullet(GameObject bullet, Vector3 pos, string tag)
+    {
+        if (tag.Equals("PlayerGun"))
+        {
+            if(playerBulletPool.Count > 0)
+            {
+                //从子弹池取出一个子弹
+                bullet = playerBulletPool[0];
+                playerBulletPool.RemoveAt(0);
+                bullet.transform.position = pos;
+                bullet.SetActive(true);
+            }
+            else
+            {
+                //新建一个子弹
+                bullet = Instantiate(bullet, pos, Quaternion.identity);
+            }
+        }else if (tag.Equals("TrackGun"))
+        {
+            if (trackBulletPool.Count > 0)
+            {
+                //从子弹池取出一个子弹
+                bullet = trackBulletPool[0];
+                trackBulletPool.RemoveAt(0);
+                bullet.transform.position = pos;
+                bullet.SetActive(true);
+            }
+            else
+            {
+                //新建一个子弹
+                bullet = Instantiate(bullet, pos, Quaternion.identity);
+            }
+        }
+        else if (tag.Equals("Enemy0Gun"))
+        {
+            if(enemy0BulletPool.Count > 0)
+            {
+                bullet = enemy0BulletPool[0];
+                enemy0BulletPool.RemoveAt(0);
+                bullet.transform.position = pos;
+                bullet.SetActive(true);
+            }
+            else
+            {
+                bullet = Instantiate(bullet, pos, Quaternion.identity);
+            }
+        }
+        else if (tag.Equals("Enemy1Gun"))
+        {
+            if(enemy1BulletPool.Count > 0)
+            {
+                bullet = enemy1BulletPool[0];
+                enemy1BulletPool.RemoveAt(0);
+                bullet.transform.position = pos;
+                bullet.SetActive(true);
+            }
+            else
+            {
+                bullet = Instantiate(bullet, pos, Quaternion.identity);
+            }
+        }
+        else if (tag.Equals("Enemy2Gun"))
+        {
+            if (enemy2BulletPool.Count > 0)
+            {
+                bullet = enemy2BulletPool[0];
+                enemy2BulletPool.RemoveAt(0);
+                bullet.transform.position = pos;
+                bullet.SetActive(true);
+            }
+            else
+            {
+                bullet = Instantiate(bullet, pos, Quaternion.identity);
+            }
+        }
+        return bullet;
     }
     private bool JudgeAllPlayerIsDead()
     {

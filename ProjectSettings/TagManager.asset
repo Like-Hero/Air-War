@@ -8,13 +8,20 @@ TagManager:
   - Enemy
   - ResultInterface
   - PlayerGun
-  - EnemyGun
   - PlayerBullet
   - EnemyBullet
   - EnemyBulletClear
   - EnemyPlaneClear
   - Player_1
   - Player_2
+  - Enemy0Gun
+  - Enemy1Gun
+  - Enemy2Gun
+  - Enemy0Bullet
+  - Enemy1Bullet
+  - Enemy2Bullet
+  - TrackBullet
+  - TrackGun
   layers:
   - Default
   - TransparentFX

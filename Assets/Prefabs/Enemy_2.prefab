@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6096352309069001450}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: EnemyGun
+  m_TagString: Enemy2Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9044e37353e34f43ba56d3a4d4b889d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1717756984323547383, guid: f9ee787f4557a144c80c6649bbd94d52, type: 3}
+  bulletPrefabs: {fileID: 1717756984323547383, guid: f9ee787f4557a144c80c6649bbd94d52,
+    type: 3}
   rate: 3
 --- !u!1 &8505874001756882118
 GameObject:

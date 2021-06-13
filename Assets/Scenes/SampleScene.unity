@@ -435,8 +435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 8505874001756882118, guid: 8156004ccda50ac459d7469025eca2a9, type: 3}
-  minDelayTime: 1
-  maxDelayTime: 1.5
+  minDelayTime: 0.5
+  maxDelayTime: 0.5
   isCreat: 0
   leftBoundary: {fileID: 1426950824}
   rightBoundary: {fileID: 322985}
@@ -1712,7 +1712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3a7e2a99f7f574e94d4cddfba0113d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prop_FireUpgradeAmount: 10
+  Prop_FireUpgradeAmount: 1000
   Prop_EnemyPlaneClearAmount: 1000
   EnemyBulletClearKeyCode: 113
   EnemyPlaneClearKeyCode: 119
@@ -1732,6 +1732,11 @@ MonoBehaviour:
   fireUpgradeNowTime: 0
   fireLevel: 0
   FireImgBar: {fileID: 1926607706}
+  playerBulletPool: []
+  trackBulletPool: []
+  enemy0BulletPool: []
+  enemy1BulletPool: []
+  enemy2BulletPool: []
 --- !u!4 &915993225
 Transform:
   m_ObjectHideFlags: 0
@@ -3761,6 +3766,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 584357290115457863, guid: eb91a07a289cefc4792780c2978da98f,
+        type: 3}
+      propertyPath: m_TagString
+      value: TrackGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889427341510499542, guid: eb91a07a289cefc4792780c2978da98f,
+        type: 3}
+      propertyPath: bulletPrefabs
+      value: 
+      objectReference: {fileID: 1717756984323547383, guid: 213d45273e0fee6418f4bbcfbf569607,
+        type: 3}
+    - target: {fileID: 2641736965375833706, guid: eb91a07a289cefc4792780c2978da98f,
+        type: 3}
+      propertyPath: bulletPrefabs
+      value: 
+      objectReference: {fileID: 1717756984323547383, guid: 213d45273e0fee6418f4bbcfbf569607,
+        type: 3}
+    - target: {fileID: 4003506745559948017, guid: eb91a07a289cefc4792780c2978da98f,
+        type: 3}
+      propertyPath: bulletPrefabs
+      value: 
+      objectReference: {fileID: 1717756984323547383, guid: 213d45273e0fee6418f4bbcfbf569607,
+        type: 3}
+    - target: {fileID: 6080243798615840275, guid: eb91a07a289cefc4792780c2978da98f,
+        type: 3}
+      propertyPath: bulletPrefabs
+      value: 
+      objectReference: {fileID: 1717756984323547383, guid: 213d45273e0fee6418f4bbcfbf569607,
+        type: 3}
+    - target: {fileID: 7634292837006121695, guid: eb91a07a289cefc4792780c2978da98f,
+        type: 3}
+      propertyPath: bulletPrefabs
+      value: 
+      objectReference: {fileID: 1717756984323547383, guid: 213d45273e0fee6418f4bbcfbf569607,
+        type: 3}
     - target: {fileID: 8256852202731090187, guid: eb91a07a289cefc4792780c2978da98f,
         type: 3}
       propertyPath: m_Name
@@ -3831,5 +3871,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8831406601655846478, guid: eb91a07a289cefc4792780c2978da98f,
+        type: 3}
+      propertyPath: bulletPrefabs
+      value: 
+      objectReference: {fileID: 1717756984323547383, guid: f13714897ece68f42912dbd5e7a0acab,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb91a07a289cefc4792780c2978da98f, type: 3}
