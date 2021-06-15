@@ -15,9 +15,9 @@ public class BulletController : MonoBehaviour
         if(transform.position.y > GameObject.Find("DestroyUpPoint").transform.position.y || transform.position.y < GameObject.Find("DestroyDownPoint").transform.position.y)
         {
             if (tag.Equals("PlayerBullet")) GameManager.Ins.playerBulletPool.Add(gameObject);
-            if (tag.Equals("Enemy0Bullet")) GameManager.Ins.enemy0BulletPool.Add(gameObject);
-            if (tag.Equals("Enemy1Bullet")) GameManager.Ins.enemy1BulletPool.Add(gameObject);
-            if (tag.Equals("Enemy2Bullet")) GameManager.Ins.enemy2BulletPool.Add(gameObject);
+            if (tag.Equals("Enemy0Bullet")) GameManager.Ins.enemiesBulletPool[0].Add(gameObject);
+            if (tag.Equals("Enemy1Bullet")) GameManager.Ins.enemiesBulletPool[1].Add(gameObject);
+            if (tag.Equals("Enemy2Bullet")) GameManager.Ins.enemiesBulletPool[2].Add(gameObject);
             gameObject.SetActive(false);
         }
     }

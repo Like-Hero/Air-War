@@ -441,9 +441,9 @@ MonoBehaviour:
   leftBoundary: {fileID: 1426950824}
   rightBoundary: {fileID: 322985}
   enemys:
-  - {fileID: 3147975876989802542, guid: 8156004ccda50ac459d7469025eca2a9, type: 3}
-  - {fileID: 3147975876989802542, guid: 4e5686832620cbc428ef2163820142bc, type: 3}
-  - {fileID: 3147975876989802542, guid: bb63278472c2b8c4d912ee9831561a7c, type: 3}
+  - {fileID: 8505874001756882118, guid: 8156004ccda50ac459d7469025eca2a9, type: 3}
+  - {fileID: 8505874001756882118, guid: 4e5686832620cbc428ef2163820142bc, type: 3}
+  - {fileID: 8505874001756882118, guid: bb63278472c2b8c4d912ee9831561a7c, type: 3}
 --- !u!4 &219209283
 Transform:
   m_ObjectHideFlags: 0
@@ -1719,10 +1719,6 @@ MonoBehaviour:
   EnemyCreator: {fileID: 219209281}
   AwardCreator: {fileID: 263898907}
   ResultInterface: {fileID: 296344405}
-  HPImgs:
-  - {fileID: 1415767655}
-  players:
-  - {fileID: 1201896314}
   gameIsPlaying: 0
   gameIsFinish: 0
   gameIsPause: 0
@@ -1732,11 +1728,12 @@ MonoBehaviour:
   fireUpgradeNowTime: 0
   fireLevel: 0
   FireImgBar: {fileID: 1926607706}
+  HPImgs:
+  - {fileID: 1415767655}
+  players:
+  - {fileID: 1201896314}
   playerBulletPool: []
   trackBulletPool: []
-  enemy0BulletPool: []
-  enemy1BulletPool: []
-  enemy2BulletPool: []
 --- !u!4 &915993225
 Transform:
   m_ObjectHideFlags: 0
@@ -2365,7 +2362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1415767656
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3871,6 +3868,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8831406601655846478, guid: eb91a07a289cefc4792780c2978da98f,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1717756984323547383, guid: f13714897ece68f42912dbd5e7a0acab,
+        type: 3}
     - target: {fileID: 8831406601655846478, guid: eb91a07a289cefc4792780c2978da98f,
         type: 3}
       propertyPath: bulletPrefabs

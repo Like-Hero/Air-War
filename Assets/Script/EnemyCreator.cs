@@ -14,7 +14,7 @@ public class EnemyCreator : MonoBehaviour
     public Transform leftBoundary;
     public Transform rightBoundary;
 
-    public Enemy[] enemys;
+    public GameObject[] enemys;
 
     private void Update()
     {
@@ -29,9 +29,21 @@ public class EnemyCreator : MonoBehaviour
     }
     private void CreatEnemy()
     {
+        GameObject enemy = null;
         int index = Random.Range(0, enemys.Length);
         float bornX = Random.Range(leftBoundary.transform.position.x + 0.5f, rightBoundary.transform.position.x - 0.5f);
-        Enemy enemy = Instantiate(enemys[index], new Vector3(bornX, transform.position.y, 0), Quaternion.identity);
+        Vector3 pos = new Vector3(bornX, transform.position.y, 0);
+        if (GameManager.Ins.enemiesPool[index].Count > 0)
+        {
+            enemy = GameManager.Ins.enemiesPool[index][0];
+            GameManager.Ins.enemiesPool[index].RemoveAt(0);
+            enemy.transform.position = pos;
+            enemy.SetActive(true);
+        }
+        else
+        {
+            enemy = Instantiate(enemys[index], pos, Quaternion.identity);
+        }
         isCreat = false;
     }
 }

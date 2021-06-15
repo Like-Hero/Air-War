@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour  
 {
-    public GameObject bulletPrefabs;
+    public GameObject bullet;
 
     private bool isCreat;
 
@@ -38,34 +38,81 @@ public class GunController : MonoBehaviour
     }
     private void Shoot()
     {
-        GameObject newBullet = GameManager.Ins.MakeBullet(bulletPrefabs, transform.position, tag);
+        GameObject newBullet = null;
         if (CompareTag("PlayerGun"))
         {
-            newBullet.tag = "PlayerBullet";
+            if (GameManager.Ins.playerBulletPool.Count > 0)
+            {
+                //从子弹池取出一个子弹
+                newBullet = GameManager.Ins.playerBulletPool[0];
+                GameManager.Ins.playerBulletPool.RemoveAt(0);
+                newBullet.transform.position = transform.position;
+                newBullet.SetActive(true);
+            }
+            else
+            {
+                //新建一个子弹
+                newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            }
         }
         else if (CompareTag("TrackGun"))
         {
-            newBullet.tag = "TrackBullet";
+            if (GameManager.Ins.trackBulletPool.Count > 0)
+            {
+                //从子弹池取出一个子弹
+                bullet = GameManager.Ins.trackBulletPool[0];
+                GameManager.Ins.trackBulletPool.RemoveAt(0);
+                bullet.transform.position = transform.position;
+                bullet.SetActive(true);
+            }
+            else
+            {
+                //新建一个子弹
+                newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            }
         }
         else if (CompareTag("Enemy0Gun"))
         {
-            newBullet.tag = "Enemy0Bullet";
+            if (GameManager.Ins.enemiesBulletPool[0].Count > 0)
+            {
+                newBullet = GameManager.Ins.enemiesBulletPool[0][0];
+                GameManager.Ins.enemiesBulletPool[0].RemoveAt(0);
+                newBullet.transform.position = transform.position;
+                newBullet.SetActive(true);
+            }
+            else
+            {
+                newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            }
         }
         else if (CompareTag("Enemy1Gun"))
         {
-            newBullet.tag = "Enemy1Bullet";
+            if (GameManager.Ins.enemiesBulletPool[1].Count > 0)
+            {
+                newBullet = GameManager.Ins.enemiesBulletPool[1][0];
+                GameManager.Ins.enemiesBulletPool[1].RemoveAt(0);
+                newBullet.transform.position = transform.position;
+                newBullet.SetActive(true);
+            }
+            else
+            {
+                newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            }
         }
         else if (CompareTag("Enemy2Gun"))
         {
-            newBullet.tag = "Enemy2Bullet";
+            if (GameManager.Ins.enemiesBulletPool[2].Count > 0)
+            {
+                newBullet = GameManager.Ins.enemiesBulletPool[2][0];
+                GameManager.Ins.enemiesBulletPool[2].RemoveAt(0);
+                newBullet.transform.position = transform.position;
+                newBullet.SetActive(true);
+            }
+            else
+            {
+                newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            }
         }
-
-        //if (CompareTag("PlayerGun"))
-        //{
-        //    Instantiate(bullet, transform.position, Quaternion.identity).tag = "PlayerBullet";
-        //}else if(CompareTag("EnemyGun")){
-        //    Instantiate(bullet, transform.position, Quaternion.identity).tag = "EnemyBullet";
-        //}
         isCreat = false;
     }
 }

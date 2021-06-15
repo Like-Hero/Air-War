@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,9 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject AwardCreator;
     public GameObject ResultInterface;
 
-    public GameObject[] HPImgs;
-
-    public GameObject[] players;
+   
 
     public bool gameIsPlaying;
     public bool gameIsFinish;
@@ -33,12 +32,20 @@ public class GameManager : MonoBehaviour
     public int fireLevel;
     public GameObject FireImgBar;
 
+    public GameObject[] HPImgs;
+
+    public GameObject[] players;
     //子弹池
     public List<GameObject> playerBulletPool;
     public List<GameObject> trackBulletPool;
-    public List<GameObject> enemy0BulletPool;
-    public List<GameObject> enemy1BulletPool;
-    public List<GameObject> enemy2BulletPool;
+
+    private int enemiesCount;
+
+    //敌人子弹池
+    public List<List<GameObject>> enemiesBulletPool;
+
+    //敌人池
+    public List<List<GameObject>> enemiesPool;
 
     private static GameManager _ins;
     public static GameManager Ins { get { return _ins; } }
@@ -48,10 +55,15 @@ public class GameManager : MonoBehaviour
         {
             _ins = this;
         }
+        enemiesCount = GameObject.Find("Creator").transform.Find("EnemyCreator").GetComponent<EnemyCreator>().enemys.Length;
         playerBulletPool = new List<GameObject>();
-        enemy0BulletPool = new List<GameObject>();
-        enemy1BulletPool = new List<GameObject>();
-        enemy2BulletPool = new List<GameObject>();
+        enemiesPool = new List<List<GameObject>>();
+        enemiesBulletPool = new List<List<GameObject>>();
+        for (int i = 0; i < enemiesCount; i++)
+        {
+            enemiesPool.Add(new List<GameObject>());
+            enemiesBulletPool.Add(new List<GameObject>());
+        }
         TxTIO.Init();
         TxTIO.ReadMaxScore();
     }
@@ -103,7 +115,7 @@ public class GameManager : MonoBehaviour
         }
         PlayerData.MaxScore = Mathf.Max(PlayerData.MaxScore, PlayerData.Score);
     }
-    public GameObject MakeBullet(GameObject bullet, Vector3 pos, string tag)
+    public GameObject CreatBullet(GameObject bullet, Vector3 pos, string tag)
     {
         if (tag.Equals("PlayerGun"))
         {
@@ -138,10 +150,10 @@ public class GameManager : MonoBehaviour
         }
         else if (tag.Equals("Enemy0Gun"))
         {
-            if(enemy0BulletPool.Count > 0)
+            if(enemiesBulletPool[0].Count > 0)
             {
-                bullet = enemy0BulletPool[0];
-                enemy0BulletPool.RemoveAt(0);
+                bullet = enemiesBulletPool[0][0];
+                enemiesBulletPool[0].RemoveAt(0);
                 bullet.transform.position = pos;
                 bullet.SetActive(true);
             }
@@ -152,10 +164,10 @@ public class GameManager : MonoBehaviour
         }
         else if (tag.Equals("Enemy1Gun"))
         {
-            if(enemy1BulletPool.Count > 0)
+            if(enemiesBulletPool[1].Count > 0)
             {
-                bullet = enemy1BulletPool[0];
-                enemy1BulletPool.RemoveAt(0);
+                bullet = enemiesBulletPool[1][0];
+                enemiesBulletPool[1].RemoveAt(0);
                 bullet.transform.position = pos;
                 bullet.SetActive(true);
             }
@@ -166,10 +178,10 @@ public class GameManager : MonoBehaviour
         }
         else if (tag.Equals("Enemy2Gun"))
         {
-            if (enemy2BulletPool.Count > 0)
+            if (enemiesBulletPool[2].Count > 0)
             {
-                bullet = enemy2BulletPool[0];
-                enemy2BulletPool.RemoveAt(0);
+                bullet = enemiesBulletPool[2][0];
+                enemiesBulletPool[2].RemoveAt(0);
                 bullet.transform.position = pos;
                 bullet.SetActive(true);
             }
@@ -180,6 +192,10 @@ public class GameManager : MonoBehaviour
         }
         return bullet;
     }
+    //public GameObject CreatEnemy(GameObject enemy, Vector3 pos)
+    //{
+
+    //}
     private bool JudgeAllPlayerIsDead()
     {
         foreach (GameObject player in players)
